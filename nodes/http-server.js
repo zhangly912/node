@@ -8,6 +8,10 @@ var http = require("http");
 http.createServer(function(req, res) {
     res.writeHead(200, { 'Content-type': 'text/plain' });
     res.end('hello world\n');
+    //res.end('hello world\n');
+    //两者的区别在于end会先调用write发送数据，然后发送信号告知响应结束。
+    //无论服务器在处理业务的时候是否发生异常，都要在结束时候调用end。不然客户端会一直处于等待状态。
+    //当然也可以通过延迟end方法，实现客户端与服务端的长连接，但任务结束时候务必关闭连接。
 }).listen(1337, '127.0.0.1');
 console.log("server running at http://127.0.0.1:1337/");
 //node http-client.js 
