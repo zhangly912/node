@@ -21,6 +21,7 @@ function upload(response, request) {
     form.parse(request, function(error, fields, files) {
         console.log("输出文件")
         console.log(files);
+        //将图片存储到该目录下面
         fs.renameSync(files.upload.path, "./tmp/zz.jpg");
         response.writeHead(200, { "Content-Type": "text/html" });
         response.write("received image:<br/>");
@@ -30,6 +31,7 @@ function upload(response, request) {
 }
 
 function show(response) {
+    //重该目录下面读取图片
     fs.readFile("./tmp/zz.jpg", "binary", function(error, file) {
         //读取本地的图片
         if (error) {
