@@ -7,6 +7,7 @@ var queryString = require("querystring");
 
 
 function start(response) {
+    // console.log(response);
     response.writeHead(200, { "Content-Type": "text/html" });
     response.end('<form action="/upload" enctype="multipart/form-data" ' +
         'method="post">' +
@@ -14,6 +15,7 @@ function start(response) {
         '<input type="file" name="upload" multiple="multiple"><br>' +
         '<input type="submit" value="Upload">' +
         '</form>');
+
 }
 
 function upload(response, request) {
